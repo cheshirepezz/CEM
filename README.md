@@ -22,10 +22,10 @@ $ cd /Users/HOME/Downloads
 $ cd CoputEM
 ```
 
-Now choose you topic you want to study (ex. TE_z):
+Now choose you topic you want to study (ex. TEz):
 
 ```
-$ cd TE_z-cart
+$ cd TEz
 $ python TEz_cart.py
 ```
 
