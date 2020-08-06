@@ -22,7 +22,7 @@ $ cd /Users/HOME/Downloads
 $ cd CoputEM
 ```
 
-Now choose you topic you want to study (ex. TEz):
+Now choose ther topic you want to study (ex. TEz):
 
 ```
 $ cd TEz
