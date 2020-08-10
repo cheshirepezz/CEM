@@ -22,7 +22,7 @@
 
 ## Table of contents
 * [Transverse Electric mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TEz)
-* [Transverse Electric mode (2D)](#TMz)
+* [Transverse Electric mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
 * [Maxwell Equation (3D)](#maxwell)
 
 ## Technologies
