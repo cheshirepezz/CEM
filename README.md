@@ -49,5 +49,6 @@ Now choose ther topic you want to study (ex. TEz):
 $ cd TEz
 $ python TEz_cart.py
 ```
+## License
 
-Enjoy!
+ComputeEM is made available under the MIT 2.0 License.
