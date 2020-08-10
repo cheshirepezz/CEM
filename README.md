@@ -51,4 +51,4 @@ $ python TEz_cart.py
 ```
 ## License
 
-ComputeEM is made available under the MIT 2.0 License.
+ComputeEM is made available under the [MIT License](https://github.com/cheshirepezz/ComputEM/blob/master/LICENSE).
