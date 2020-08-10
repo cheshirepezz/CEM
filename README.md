@@ -39,16 +39,10 @@ To use this code:
 
 Open a terminal and write the command below to clone in your PC ComputEM repo:
 
-'''
-git clone https://gitlab.com/aidaspace/aidapy.git
-cd aidapy
-'''
-
 ```
-$ cd /Users/HOME/Downloads
-$ cd CoputEM
+git clone https://github.com/cheshirepezz/ComputEM.git
+cd ComputEM
 ```
-
 Now choose ther topic you want to study (ex. TEz):
 
 ```
