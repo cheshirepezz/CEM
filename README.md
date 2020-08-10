@@ -1,3 +1,23 @@
+<!-- Meta-Badges -->
+</p>
+
+<p align="center">
+    <img alt="Size" src="https://img.shields.io/github/repo-size/cheshirepezz/ComputEM">
+  </a>
+  <img alt="Forks" src="https://img.shields.io/github/forks/cheshirepezz/ComputEM">
+  </a>
+  <img alt="Stars" src="https://img.shields.io/github/stars/cheshirepezz/ComputEM">
+  </a>
+  <img alt="Languages" src="https://img.shields.io/github/languages/count/cheshirepezz/ComputEM">
+  </a>
+  <a href="https://github.com/cheshirepezz/ComputEM/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/cheshirepezz/ComputEM">
+  </a>
+  <img alt="MIT Licence" src="https://img.shields.io/github/license/cheshirepezz/ComputEM">
+  </a>
+  
+</p>
+
 # Computational ElectroMagnetism on Yee Mesh (FDTD)
 
 ## Table of contents
