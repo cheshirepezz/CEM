@@ -27,15 +27,22 @@
 
 ## Technologies
 Project is created with:
-* Python: 3.7.6
+* [Python](https://www.python.org/): 3.7.6
 	
-## Setup
+## Installation
+
+The sources are located on github: https://github.com/cheshirepezz/ComputEM/
+
 To use this code:
 * Star the directory "ComputEM" 
-* Download it
-* Then run the project following the instructions below
+* Clone the github repo
 
-Type on terminal these lines:
+Open a terminal and write the command below to clone in your PC ComputEM repo:
+
+'''
+git clone https://gitlab.com/aidaspace/aidapy.git
+cd aidapy
+'''
 
 ```
 $ cd /Users/HOME/Downloads
