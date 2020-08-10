@@ -21,7 +21,7 @@
 # Computational ElectroMagnetism on Yee Mesh (FDTD)
 
 ## Table of contents
-* [Transverse Electric mode (2D)](#TEz)
+* [Transverse Electric mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TEz)
 * [Transverse Electric mode (2D)](#TMz)
 * [Maxwell Equation (3D)](#maxwell)
 
