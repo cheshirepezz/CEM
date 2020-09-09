@@ -2,18 +2,18 @@
 </p>
 
 <p align="center">
-    <img alt="Size" src="https://img.shields.io/github/repo-size/cheshirepezz/ComputEM">
+    <img alt="Size" src="https://img.shields.io/github/repo-size/cheshirepezz/Plasma-Recipes">
   </a>
-  <img alt="Forks" src="https://img.shields.io/github/forks/cheshirepezz/ComputEM">
+  <img alt="Forks" src="https://img.shields.io/github/forks/cheshirepezz/Plasma-Recipes">
   </a>
-  <img alt="Stars" src="https://img.shields.io/github/stars/cheshirepezz/ComputEM">
+  <img alt="Stars" src="https://img.shields.io/github/stars/cheshirepezz/Plasma-Recipes">
   </a>
-  <img alt="Languages" src="https://img.shields.io/github/languages/count/cheshirepezz/ComputEM">
+  <img alt="Languages" src="https://img.shields.io/github/languages/count/cheshirepezz/Plasma-Recipes">
   </a>
-  <a href="https://github.com/cheshirepezz/ComputEM/graphs/contributors">
-    <img alt="Contributors" src="https://img.shields.io/github/contributors/cheshirepezz/ComputEM">
+  <a href="https://github.com/cheshirepezz/Plasma-Recipes/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/cheshirepezz/Plasma-Recipes">
   </a>
-  <img alt="MIT Licence" src="https://img.shields.io/github/license/cheshirepezz/ComputEM">
+  <img alt="MIT Licence" src="https://img.shields.io/github/license/cheshirepezz/Plasma-Recipes">
   </a>
   
 </p>
@@ -21,12 +21,12 @@
 # Computational Plasma Physics (FDTD)
 
 ## Table of contents
-* [Maxwell Equation (1D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell1D)
-* [Transverse Electric mode (2D Yee)](https://github.com/cheshirepezz/ComputEM/tree/master/TEz)
-* [Transverse Magnetic mode (2D Yee)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
-* [Maxwell Equation (3D Yee)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell3D)
-* [Particle Drift](https://github.com/cheshirepezz/ComputEM/tree/master/Drift)
-* [Landau Damping](https://github.com/cheshirepezz/ComputEM/tree/master/Landau_Damping)
+* [Maxwell Equation (1D)](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell1D)
+* [Transverse Electric mode (2D Yee)](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
+* [Transverse Magnetic mode (2D Yee)](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TMz)
+* [Maxwell Equation (3D Yee)](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D)
+* [Particle Drift](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Drift)
+* [Landau Damping](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Landau_Damping)
 
 
 ## Technologies
@@ -35,17 +35,17 @@ Project is created with:
 	
 ## Installation
 
-The sources are located on github: https://github.com/cheshirepezz/ComputEM/
+The sources are located on github: https://github.com/cheshirepezz/Plasma-Recipes/
 
 To use this code:
-* Star the directory "ComputEM" 
+* Star the directory "Plasma-Recipes" 
 * Clone the github repo
 
-Open a terminal and write the command below to clone in your PC ComputEM repo:
+Open a terminal and write the command below to clone in your PC Plasma-Recipes repo:
 
 ```
-git clone https://github.com/cheshirepezz/ComputEM.git
-cd ComputEM
+git clone https://github.com/cheshirepezz/Plasma-Recipes.git
+cd 
 ```
 Now choose ther topic you want to study (ex. TEz):
 
@@ -55,4 +55,4 @@ $ python TEz_cart.py
 ```
 ## License
 
-ComputeEM is made available under the [MIT License](https://github.com/cheshirepezz/ComputEM/blob/master/LICENSE).
+ComputeEM is made available under the [MIT License](https://github.com/cheshirepezz/Plasma-Recipes/blob/master/LICENSE).
