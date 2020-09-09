@@ -18,7 +18,7 @@
   
 </p>
 
-# Computational ElectroMagnetism (FDTD)
+# Computational Plasma Physics (FDTD)
 
 ## Table of contents
 * [Maxwell Equation (1D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell1D)
