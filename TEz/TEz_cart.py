@@ -1,12 +1,12 @@
 #
 # created:        01.08.2020
-# last modified:  25.08.2020
+# last modified:  08.09.2020
 # author:         Luca Pezzini
 # e-mail :        luca.pezzini@edu.unito.it
 # MIT license
 
 #
-# Please feel free to use and modify this, but keep the above information. 
+# Please feel free to use and modify this code, but keep the above information. 
 # Thanks!
 #
 
@@ -17,8 +17,8 @@
 # in simple cartesian geometry. 
 #           Yee Grid (Staggered grid)
 #           E[n-1] H[n-1/2] E[n] H[n+1/2] E[n+1]
-#           E[0          1          2         3]
-#           B[      0          1          2    ]
+#           E[0          1          2          3]
+#           B[      0          1          2     ]
 # The E fields are defined at every unitary space indices (i, j); instead
 # B field is defined at fractional indices (i+0.5, j+0.5) as the Yee
 # It's used the convention to shift i,j+1/2->i,j+1 & n+1/2->n solving the 
@@ -35,19 +35,28 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import pyplot, cm
-from matplotlib import animation as anim
 from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import animation as anim
+import time
+import gc
 
 # Function def.
 
-def energy(p):
+def Energy(p):
     plt.figure()
     plt.plot(p)
-    plt.title("Total Energy in Time")
+    plt.title("Energy Conservation")
     plt.xlabel("time")
-    plt.ylabel("Utot")
+    plt.ylabel("U")
 
-def plot2D(x, y, p):
+def DivE(p):
+    plt.figure()
+    plt.plot(p)
+    plt.title("Mimetic Operator")
+    plt.xlabel("time")
+    plt.ylabel("div(E)")
+
+def Plot2D(x, y, p):
     plt.figure()
     plt.contourf(x, y, p)#, cmap=plt.cm.jet)
     plt.title("Contour of Bz")
@@ -55,7 +64,7 @@ def plot2D(x, y, p):
     plt.ylabel("x")
     plt.colorbar()
 
-def plot3D(x, y, p):
+def Plot3D(x, y, p):
     fig = pyplot.figure(figsize=(11, 7), dpi=100)
     ax = fig.gca(projection='3d')
     surf = ax.plot_surface(x, y, p[:], rstride=1, cstride=1, cmap=cm.viridis,
@@ -64,27 +73,32 @@ def plot3D(x, y, p):
     ax.set_xlabel('$x$')
     ax.set_ylabel('$y$')
     plt.show()
+
+animate = True
+save = False
     
-# Animation setup
-#fig = plt.figure('frame')
-#plt.rcParams['animation.ffmpeg_path'] = "/Users/luca_pezzini/Documents/00-plasma_phy/covariant_pic-2d"
-#plt.rcParams['animation.bitrate'] = 100000
-#ims = []
+# Bz animation setup
+if animate:    
+    fig = plt.figure('Bz animation')    
+    plt.rcParams['animation.ffmpeg_path'] = "/usr/local/Cellar/ffmpeg/4.2.2_2/bin"    
+    plt.rcParams['animation.bitrate'] = 100000    
+    ims = []
 
 #
 # STEP 1: SET the GRID!
 #
 
-Nt = 4000 # number of time steps
-Nx, Ny = 501, 501  # nodes
-sigma = 0.2
+Nt = 1000 # number of time steps
+Nx, Ny = 51, 51  # nodes
+sigma = 0.02
 xmin, xmax = 0, 1 # physic domain x
 ymin, ymax = 0, 1 # physic domain y
 
-Lx, Ly = int(abs(xmax-xmin)), int(abs(ymax-ymin)) #logic domain lenght 
-dx = Lx/(Nx-1) # faces are (nodes - 1)
-dy = Ly/(Ny-1)
+Lx, Ly = int(abs(xmax - xmin)), int(abs(ymax - ymin)) #logic domain lenght 
+dx = Lx/(Nx - 1) # faces are (nodes - 1)
+dy = Ly/(Ny - 1)
 dt = sigma*dx # CFL condition
+#dt = 0.00005 
 
 print("LATTICE PARAMETERS!")
 print("Numbers of Iterations:", Nt)
@@ -99,27 +113,27 @@ print("Increments (dx, dy):", dx, dy)
 # indexing, while ‘xy’ returns a meshgrid with Cartesian indexing
 #
 
-x = np.linspace(xmin, xmax, Nx)
-y = np.linspace(ymin, ymax, Ny)
+x = np.linspace(xmin, xmax, Nx, dtype=float)
+y = np.linspace(ymin, ymax, Ny, dtype=float)
 xv, yv = np.meshgrid(x, y, indexing='ij')
 
 # Initialization of field matrices
-Bz = np.zeros([Nx, Ny])
-Ex = np.zeros([Nx, Ny])
-Ey = np.zeros([Nx, Ny])
-Bzbef = np.zeros([Nx, Ny])
-Utot = np.zeros([Nt])
+Ex = np.zeros([Nx, Ny], dtype=float)
+Ey = np.zeros([Nx, Ny], dtype=float)
+Bz = np.zeros([Nx, Ny], dtype=float)
+Bzold = np.zeros([Nx, Ny], dtype=float)
 
 # Swop variable
-Ex_l = np.zeros([Nx, Ny])
-Ex_b = np.zeros([Nx, Ny])
-Ey_l = np.zeros([Nx, Ny])
-Ey_b = np.zeros([Nx, Ny])
-Bz_l = np.zeros([Nx, Ny])
-Bz_b = np.zeros([Nx, Ny])
+Ex_l = np.zeros([Nx, Ny], dtype=float)
+Ex_b = np.zeros([Nx, Ny], dtype=float)
+Ey_l = np.zeros([Nx, Ny], dtype=float)
+Ey_b = np.zeros([Nx, Ny], dtype=float)
+Bz_l = np.zeros([Nx, Ny], dtype=float)
+Bz_b = np.zeros([Nx, Ny], dtype=float)
 
-# Initial conditions
-Bz[int((Nx-1)/2),int((Ny-1)/2)] = 0.001
+U = np.zeros([Nt], dtype=float) # Total energy
+divE = np.zeros([Nt], dtype=float) # Divergence of E
+Bz[int((Nx-1)/2),int((Ny-1)/2)] = 0.001 # Initial conditions
 
 #
 # STEP 3: TIME EVOLUTION OF THE FIELD ON THE GRID!
@@ -129,17 +143,18 @@ Bz[int((Nx-1)/2),int((Ny-1)/2)] = 0.001
 # Note we don't start from zero cause 0 and Nx-1 are the same node
 xs = 1
 ys = 1
-xe = Nx-1
-ye = Ny-1
+xe = Nx - 1
+ye = Ny - 1
 
 print("START SYSTEM EVOLUTION!")
+start = time.time()
 for t in range(Nt): # count {0, Nt-1}
 
+    Bzold[:, :] = Bz[:, :]
+
     # BEGIN : spatial update loops for Ey and Ex fields
-    Ex[xs:xe, ys:ye] +=   (dt/dy) * (Bz[xs:xe, ys+1:ye+1] - Bz[xs:xe, ys:ye])
-    Ey[xs:xe, ys:ye] += - (dt/dx) * (Bz[xs+1:xe+1, ys:ye] - Bz[xs:xe, ys:ye])
-    #Ex[xs+1:xe+1, ys:ye] +=   (dt/dy) * (Bz[xs+1:xe+1, ys+1:ye+1] - Bz[xs+1:xe+1, ys:ye])
-    #Ey[xs:xe, ys+1:ye+1] += - (dt/dx) * (Bz[xs+1:xe+1, ys+1:ye+1] - Bz[xs:xe, ys+1:ye+1])
+    Ex[xs:xe, ys:ye] += dt * ((1/dy) * (Bz[xs:xe, ys+1:ye+1] - Bz[xs:xe, ys:ye]))
+    Ey[xs:xe, ys:ye] -= dt * ((1/dx) * (Bz[xs+1:xe+1, ys:ye] - Bz[xs:xe, ys:ye]))   
     # END : spatial update loops for Ey and Ex fields
     
     # swop var.
@@ -148,56 +163,63 @@ for t in range(Nt): # count {0, Nt-1}
     Ey_l[0, :] = Ey[0, :]
     Ey_b[:, 0] = Ey[:, 0]
     # Reflective BC for E field
-    Ex[0, :]   = Ex[-1, :]  #left=right
-    Ex[-1, :]  = Ex_l[0, :] #right=left
-    Ex[:, 0]   = Ex[:, -1]  #bottom=top
-    Ex[:, -1]  = Ex_b[:, 0] #top=bottom
-    Ey[0, :]   = Ey[-1, :] #left=right
-    Ey[-1, :]  = Ey_l[0, :] #right=left
-    Ey[:, 0]   = Ey[:, -1] #bottom=top
-    Ey[:, -1]  = Ey_b[:,0] #top=bottom
-
-    Bzbef[:, :] = Bz[:, :]
+    Ex[0, :] = Ex[-1, :]  #  left = right
+    Ex[-1, :] = Ex_l[0, :] # right = left
+    Ex[:, 0] = Ex[:, -1]  # bottom = top
+    Ex[:, -1] = Ex_b[:, 0] # top = bottom
+    Ey[0, :] = Ey[-1, :] #l eft = right
+    Ey[-1, :] = Ey_l[0, :] # right = left
+    Ey[:, 0] = Ey[:, -1] # bottom = top
+    Ey[:, -1] = Ey_b[:,0] # top = bottom
 
     # BEGIN : spatial update loops for Bz fields
-    # NOTE: B field is calculate with the updated E field so is half a step ahead
+    # note: B field is calculate with the updated E field so is half a step ahead
     Bz[xs:xe, ys:ye] += dt * ((1/dy) * (Ex[xs:xe, ys:ye] - Ex[xs:xe, ys-1:ye-1])\
                             - (1/dx) * (Ey[xs:xe, ys:ye] - Ey[xs-1:xe-1, ys:ye]))
-    #Bz[xs+1:xe+1, ys+1:ye+1] += dt * ((1/dy) * (Ex[xs+1:xe+1, ys+1:ye+1] - Ex[xs+1:xe+1, ys:ye])\
-    #                       - (1/dx) * (Ey[xs+1:xe+1, ys+1:ye+1] - Ey[xs:xe, ys+1:ye+1]))
     # END : spatial update loops for Bz fields
     
-    # Reflective BC for B field
+    # swop var.
     Bz_l[0, :] = Bz[0, :]
     Bz_b[:, 0] = Bz[:, 0]
+    # Reflective BC for B field
+    Bz[0, :]   = Bz[-1, :] # left = right
+    Bz[-1, :]  = Bz_l[0, :] # right = left
+    Bz[:, 0]   = Bz[:, -1] # bottom = top
+    Bz[:, -1]  = Bz_b[:, 0] # top = bottom
 
-    Bz[0, :]   = Bz[-1, :] #left=right
-    Bz[-1, :]  = Bz_l[0, :] #right=left
-    Bz[:, 0]   = Bz[:, -1] #bottom=top
-    Bz[:, -1]  = Bz_b[:, 0] #top=bottom
-
-    # Energy must conserve
-    # Time is staggered to updating E and B. So to calculate Utot 
-    # we should center the value of the B field to the same point in 
-    # time (i.e. B_av(t) = (B(t) + B(t+1))/2)
-
-    Utot[t] = np.sum(np.power(Ex[xs:xe, ys:ye],2.)\
+    # Poynting theorem
+    U[t] =  0.5 * np.sum(np.power(Ex[xs:xe, ys:ye],2.)\
                       + np.power(Ey[xs:xe, ys:ye],2.)\
-                      + np.power((Bz[xs:xe, ys:ye] + Bzbef[xs:xe, ys:ye])/2.,2.))
+                      + Bz[xs:xe, ys:ye] * Bzold[xs:xe, ys:ye])
+    divE[t] = np.sum((1/dx) * (Ex[xs+1:xe+1, ys:ye] - Ex[xs:xe, ys:ye])\
+                   + (1/dy) * (Ey[xs:xe, ys+1:ye+1] - Ey[xs:xe, ys:ye]))
+
+    # Animation frame gathering
+    if (t % 20 == 0) & animate:
+        print(t/Nt)
+        im = plt.imshow(Bz, origin='lower', extent=[0, Lx, 0, Ly], aspect='equal', vmin=-0.1, vmax=0.1)
+        ims.append([im])
+    gc.collect()
+    
+stop = time.time()
 print("DONE!")
+
+print("Min Energy:", np.min(U))
+print("Max Energy:", np.max(U))
 
 #
 # STEP 4: VISUALIZATION!
 #
 
-# Create figures
-#plot3D(xv, yv, Bz)
-plot2D(xv, yv, Bz)
-energy(Utot)
+if animate:
+    an = anim.ArtistAnimation(fig, ims, interval=1, repeat_delay=0, blit=True)
+    writer = anim.FFMpegWriter(fps=30)
+    if save:
+        an.save('bz_vid.mp4', writer=writer, dpi=500)
 
-# Create animation
-#an = anim.ArtistAnimation(fig, ims, interval=10, repeat_delay=0, blit=True)
-#writer = anim.FFMpegWriter(fps=30)
-#an.save('bz_vid.mp4', writer=writer, dpi=500)
+#Plot3D(xv, yv, Bz)
+Plot2D(xv, yv, Bz)
+Energy(U)
+DivE(divE)
 
 plt.show()
