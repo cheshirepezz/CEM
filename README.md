@@ -26,7 +26,7 @@
 * [Transverse Magnetic mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
 * [Maxwell Equation (3D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell3D)
 * [Particle Drift](https://github.com/cheshirepezz/ComputEM/tree/master/Drift)
-* [Landau Damping](https://github.com/cheshirepezz/ComputEM/tree/master/Landau Damping)
+* [Landau Damping](https://github.com/cheshirepezz/ComputEM/tree/master/Landau_Damping)
 
 
 ## Technologies
