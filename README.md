@@ -22,9 +22,9 @@
 
 ## Table of contents
 * [Maxwell Equation (1D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell1D)
-* [Transverse Electric mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TEz)
-* [Transverse Magnetic mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
-* [Maxwell Equation (3D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell3D)
+* [Transverse Electric mode (2D Yee)](https://github.com/cheshirepezz/ComputEM/tree/master/TEz)
+* [Transverse Magnetic mode (2D Yee)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
+* [Maxwell Equation (3D Yee)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell3D)
 * [Particle Drift](https://github.com/cheshirepezz/ComputEM/tree/master/Drift)
 * [Landau Damping](https://github.com/cheshirepezz/ComputEM/tree/master/Landau_Damping)
 
