@@ -23,7 +23,9 @@
 ## Table of contents
 * [Transverse Electric mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TEz)
 * [Transverse Magnetic mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
+* [Maxwell Equation (1D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell1D)
 * [Maxwell Equation (3D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell3D)
+* [Particle Drift](https://github.com/cheshirepezz/ComputEM/tree/master/Drift)
 
 ## Technologies
 Project is created with:
