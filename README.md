@@ -22,8 +22,8 @@
 
 ## Table of contents
 * [Transverse Electric mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TEz)
-* [Transverse Electric mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
-* [Maxwell Equation (3D)](#maxwell)
+* [Transverse Magnetic mode (2D)](https://github.com/cheshirepezz/ComputEM/tree/master/TMz)
+* [Maxwell Equation (3D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell3D)
 
 ## Technologies
 Project is created with:
