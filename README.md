@@ -18,7 +18,7 @@
   
 </p>
 
-# Computational ElectroMagnetism on Yee Mesh (FDTD)
+# Computational ElectroMagnetism (FDTD)
 
 ## Table of contents
 * [Maxwell Equation (1D)](https://github.com/cheshirepezz/ComputEM/tree/master/Maxwell1D)
