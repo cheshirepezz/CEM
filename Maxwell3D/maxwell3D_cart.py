@@ -31,12 +31,9 @@
 #
 
 import math
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import pyplot, cm
-from mpl_toolkits.mplot3d import Axes3D
-
-# Function def.
 
 def Energy(p):
     plt.figure()
@@ -56,8 +53,8 @@ def DivB(p):
 # STEP 1: SET the GRID!
 #
 
-Nt = 800 # number of time steps
-Nx, Ny, Nz = 51, 51, 51  # nodes
+Nt = 1000 # number of time steps
+Nx, Ny, Nz = 50, 50, 50  # nodes
 sigma = 0.02
 xmin, xmax = 0, 1 # physic domain x
 ymin, ymax = 0, 1 # physic domain y
@@ -87,6 +84,7 @@ x = np.linspace(xmin, xmax, Nx, dtype=float)
 y = np.linspace(ymin, ymax, Ny, dtype=float)
 z = np.linspace(zmin, zmax, Nz, dtype=float)
 xv, yv, zv = np.meshgrid(x, y, z, indexing='ij')
+xv1, yv1 = np.meshgrid(x, y, indexing='ij')
 
 # Initialization of field matrices
 Ex = np.zeros([Nx, Ny, Nz], dtype=float)
@@ -98,6 +96,14 @@ Bz = np.zeros([Nx, Ny, Nz], dtype=float)
 Bxold = np.zeros([Nx, Ny, Nz], dtype=float)
 Byold = np.zeros([Nx, Ny, Nz], dtype=float)
 Bzold = np.zeros([Nx, Ny, Nz], dtype=float)
+Exy = np.zeros([Nx, Nz], dtype=float)
+Eyz = np.zeros([Nx, Nz], dtype=float)
+Exz = np.zeros([Nx, Nz], dtype=float)
+Bxy = np.zeros([Nx, Nz], dtype=float)
+Byz = np.zeros([Nx, Nz], dtype=float)
+Bxz = np.zeros([Nx, Nz], dtype=float)
+Emax = []
+Bmax = []
 
 # Swop variable
 Ex_w = np.zeros([Nx, Ny, Nz], dtype=float)
@@ -119,13 +125,17 @@ Bz_w = np.zeros([Nx, Ny, Nz], dtype=float)
 Bz_s = np.zeros([Nx, Ny, Nz], dtype=float)
 Bz_b = np.zeros([Nx, Ny, Nz], dtype=float)
 
-Bz[int((Nx - 1)/2),int((Ny - 1)/2), int((Nz - 1)/2)] = 0.001 # Initial conditions
+Bz[int((Nx - 1)/2),int((Ny - 1)/2), int((Nz - 1)/2)] = 1. # Initial conditions
 U = np.zeros([Nt], dtype=float) # Total energy
 divB = np.zeros([Nt], dtype=float) # Divergence of B
 
 #
 # STEP 3: TIME EVOLUTION OF THE FIELD ON THE GRID!
 #
+
+#flag
+flag_plt = False
+flag_start = False
 
 # Start & End
 # Note we don't start from zero cause 0 and Nx-1 are the same node
@@ -214,6 +224,66 @@ for t in range(Nt): # count {0, Nt-1}
     divB[t] = np.sum((1/dx) * (Bx[xs+1:xe+1, ys:ye, zs:ze] - Bx[xs:xe, ys:ye, zs:ze])\
                    + (1/dy) * (By[xs:xe, ys+1:ye+1, zs:ze] - By[xs:xe, ys:ye, zs:ze])\
                    + (1/dz) * (Bz[xs:xe, ys:ye, zs+1:ze+1] - Bz[xs:xe, ys:ye, zs:ze]))
+    # Reduce the dimension slicing in the middle of the plane y es.
+    Exy[xs:xe, zs:ze] = np.power(np.power(Ex[xs:xe, ys:ye, int(Ny/2.)], 2.)\
+                               + np.power(Ey[xs:xe, ys:ye, int(Ny/2.)], 2.)\
+                               + np.power(Ez[xs:xe, ys:ye, int(Ny/2.)], 2.) , 1./2.)
+    Eyz[xs:xe, zs:ze] = np.power(np.power(Ex[int(Ny/2.), ys:ye, zs:ze], 2.)\
+                               + np.power(Ey[int(Ny/2.), ys:ye, zs:ze], 2.)\
+                               + np.power(Ez[int(Ny/2.), ys:ye, zs:ze], 2.) , 1./2.)
+    Exz[xs:xe, zs:ze] = np.power(np.power(Ex[xs:xe, int(Ny/2.), zs:ze], 2.)\
+                               + np.power(Ey[xs:xe, int(Ny/2.), zs:ze], 2.)\
+                               + np.power(Ez[xs:xe, int(Ny/2.), zs:ze], 2.) , 1./2.)
+    Bxy[xs:xe, zs:ze] = np.power(np.power(Bx[xs:xe, ys:ye, int(Ny/2.)], 2.)\
+                               + np.power(By[xs:xe, ys:ye, int(Ny/2.)], 2.)\
+                               + np.power(Bz[xs:xe, ys:ye, int(Ny/2.)], 2.) , 1./2.)
+    Byz[xs:xe, zs:ze] = np.power(np.power(Bx[int(Ny/2.), ys:ye, zs:ze], 2.)\
+                               + np.power(By[int(Ny/2.), ys:ye, zs:ze], 2.)\
+                               + np.power(Bz[int(Ny/2.), ys:ye, zs:ze], 2.) , 1./2.)
+    Bxz[xs:xe, zs:ze] = np.power(np.power(Bx[xs:xe, int(Ny/2.), zs:ze], 2.)\
+                               + np.power(By[xs:xe, int(Ny/2.), zs:ze], 2.)\
+                               + np.power(Bz[xs:xe, int(Ny/2.), zs:ze], 2.) , 1./2.)
+    Emax.append([max(Exy.max(), Eyz.max(), Exz.max())])
+    Bmax.append([max(Bxy.max(), Byz.max(), Bxz.max())])
+
+    if flag_plt == False:
+        plt.figure(figsize =(12, 10))
+    
+    plt.subplot(2,2,1)
+    plt.pcolor(xv1, yv1, Bxy)
+    plt.title("Bxy plane")
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.colorbar()
+
+    plt.subplot(2,2,2)
+    plt.pcolor(xv1, yv1, Byz)
+    plt.title("Byz plane")
+    plt.xlabel("y")
+    plt.ylabel("z")
+    plt.colorbar()
+
+    plt.subplot(2,2,3)
+    plt.pcolor(xv1, yv1, Bxz)
+    plt.title("Bxz plane")
+    plt.xlabel("x")
+    plt.ylabel("z")
+    plt.colorbar()
+
+    plt.subplot(2,2,4)
+    plt.plot(Emax)
+    plt.plot(Bmax)
+    plt.title('Emax (t)')
+    plt.xlabel("time")
+    plt.ylabel("Fields max")
+    
+    if flag_start == False:
+        command = input("Press Enter, then start.")
+        flag_start = True
+        
+    plt.pause(0.001)
+    plt.clf()
+    flag_plt=True
 
 print("DONE!")
 
@@ -225,6 +295,6 @@ print("Max Energy", np.max(U))
 #
 
 Energy(U)
-DivB(divB)
+DivE(divB)
 
 plt.show()
