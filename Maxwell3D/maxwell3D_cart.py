@@ -224,6 +224,7 @@ for t in range(Nt): # count {0, Nt-1}
     divB[t] = np.sum((1/dx) * (Bx[xs+1:xe+1, ys:ye, zs:ze] - Bx[xs:xe, ys:ye, zs:ze])\
                    + (1/dy) * (By[xs:xe, ys+1:ye+1, zs:ze] - By[xs:xe, ys:ye, zs:ze])\
                    + (1/dz) * (Bz[xs:xe, ys:ye, zs+1:ze+1] - Bz[xs:xe, ys:ye, zs:ze]))
+    
     # Reduce the dimension slicing in the middle of the plane y es.
     Exy[xs:xe, zs:ze] = np.power(np.power(Ex[xs:xe, ys:ye, int(Ny/2.)], 2.)\
                                + np.power(Ey[xs:xe, ys:ye, int(Ny/2.)], 2.)\
@@ -243,6 +244,7 @@ for t in range(Nt): # count {0, Nt-1}
     Bxz[xs:xe, zs:ze] = np.power(np.power(Bx[xs:xe, int(Ny/2.), zs:ze], 2.)\
                                + np.power(By[xs:xe, int(Ny/2.), zs:ze], 2.)\
                                + np.power(Bz[xs:xe, int(Ny/2.), zs:ze], 2.) , 1./2.)
+    
     Emax.append([max(Exy.max(), Eyz.max(), Exz.max())])
     Bmax.append([max(Bxy.max(), Byz.max(), Bxz.max())])
 
@@ -295,6 +297,6 @@ print("Max Energy", np.max(U))
 #
 
 Energy(U)
-DivE(divB)
+DivB(divB)
 
 plt.show()
