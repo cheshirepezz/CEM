@@ -31,6 +31,7 @@
 #
 
 import math
+import time
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
@@ -49,11 +50,19 @@ def DivB(p):
     plt.xlabel("time")
     plt.ylabel("div(B)")
 
+def Fieldmax(p1, p2):
+    plt.figure()
+    plt.plot(p1)
+    plt.plot(p2)
+    plt.title('Emax (t)')
+    plt.xlabel("time")
+    plt.ylabel("Fields max")
+
 #
 # STEP 1: SET the GRID!
 #
 
-Nt = 1000 # number of time steps
+Nt = 3000 # number of time steps
 Nx, Ny, Nz = 50, 50, 50  # nodes
 sigma = 0.02
 xmin, xmax = 0, 1 # physic domain x
@@ -66,8 +75,8 @@ Lz = int(abs(zmax - zmin)) # logic domain lenght z
 dx = Lx/(Nx - 1) # faces are (nodes - 1)
 dy = Ly/(Ny - 1)
 dz = Ly/(Nz - 1)
-dt = sigma*dx # CFL condition
-#dt = 0.00005 
+#dt = sigma*dx # CFL condition
+dt = 0.0005 
 
 print("LATTICE PARAMETERS!")
 print("Numbers of Iterations:", Nt)
@@ -125,7 +134,7 @@ Bz_w = np.zeros([Nx, Ny, Nz], dtype=float)
 Bz_s = np.zeros([Nx, Ny, Nz], dtype=float)
 Bz_b = np.zeros([Nx, Ny, Nz], dtype=float)
 
-Bz[int((Nx - 1)/2),int((Ny - 1)/2), int((Nz - 1)/2)] = 1. # Initial conditions
+Bz[int((Nx - 1)/2), int((Ny - 1)/2), int((Nz - 1)/2)] = 0.001 # Initial conditions
 U = np.zeros([Nt], dtype=float) # Total energy
 divB = np.zeros([Nt], dtype=float) # Divergence of B
 
@@ -151,12 +160,12 @@ for t in range(Nt): # count {0, Nt-1}
     Bzold[:, :, :] = Bz[:, :, :]
 
     # BEGIN : spatial update loops for Ey and Ex fields
-    Ex[xs:xe, ys:ye, zs:ze] += (dt/dy) * (Bz[xs:xe, ys+1:ye+1, zs:ze] - Bz[xs:xe, ys:ye, zs:ze])\
-                             - (dt/dz) * (By[xs:xe, ys:ye, zs+1:ze+1] - By[xs:xe, ys:ye, zs:ze])
-    Ey[xs:xe, ys:ye, zs:ze] += (dt/dz) * (Bx[xs:xe, ys:ye, zs+1:ze+1] - Bx[xs:xe, ys:ye, zs:ze])\
-                             - (dt/dx) * (Bz[xs+1:xe+1, ys:ye, zs:ze] - Bz[xs:xe, ys:ye, zs:ze])
-    Ez[xs:xe, ys:ye, zs:ze] += (dt/dx) * (By[xs+1:xe+1, ys:ye, zs:ze] - By[xs:xe, ys:ye, zs:ze])\
-                             - (dt/dy) * (Bx[xs:xe, ys+1:ye+1, zs:ze] - Bx[xs:xe, ys:ye, zs:ze])
+    Ex[xs:xe, ys:ye, zs:ze] += dt * ((1./dy) * (Bz[xs:xe, ys+1:ye+1, zs:ze] - Bz[xs:xe, ys:ye, zs:ze])\
+                                   - (1./dz) * (By[xs:xe, ys:ye, zs+1:ze+1] - By[xs:xe, ys:ye, zs:ze]))
+    Ey[xs:xe, ys:ye, zs:ze] += dt * ((1./dz) * (Bx[xs:xe, ys:ye, zs+1:ze+1] - Bx[xs:xe, ys:ye, zs:ze])\
+                                   - (1./dx) * (Bz[xs+1:xe+1, ys:ye, zs:ze] - Bz[xs:xe, ys:ye, zs:ze]))
+    Ez[xs:xe, ys:ye, zs:ze] += dt * ((1./dx) * (By[xs+1:xe+1, ys:ye, zs:ze] - By[xs:xe, ys:ye, zs:ze])\
+                                   - (1./dy) * (Bx[xs:xe, ys+1:ye+1, zs:ze] - Bx[xs:xe, ys:ye, zs:ze]))
 
     # swop var.
     Ex_w[0, :, :] = Ex[0, :, :]
@@ -221,9 +230,9 @@ for t in range(Nt): # count {0, Nt-1}
                           + Bx[xs:xe, ys:ye, zs:ze] * Bxold[xs:xe, ys:ye, zs:ze]\
                           + By[xs:xe, ys:ye, zs:ze] * Byold[xs:xe, ys:ye, zs:ze]\
                           + Bz[xs:xe, ys:ye, zs:ze] * Bzold[xs:xe, ys:ye, zs:ze])
-    divB[t] = np.sum((1/dx) * (Bx[xs+1:xe+1, ys:ye, zs:ze] - Bx[xs:xe, ys:ye, zs:ze])\
-                   + (1/dy) * (By[xs:xe, ys+1:ye+1, zs:ze] - By[xs:xe, ys:ye, zs:ze])\
-                   + (1/dz) * (Bz[xs:xe, ys:ye, zs+1:ze+1] - Bz[xs:xe, ys:ye, zs:ze]))
+    divB[t] = np.sum((1/dx) * (Bx[xs:xe, ys:ye, zs:ze] - Bx[xs-1:xe-1, ys:ye, zs:ze])\
+                   + (1/dy) * (By[xs:xe, ys:ye, zs:ze] - By[xs:xe, ys-1:ye-1, zs:ze])\
+                   + (1/dz) * (Bz[xs:xe, ys:ye, zs:ze] - Bz[xs:xe, ys:ye, zs-1:ze-1]))
     
     # Reduce the dimension slicing in the middle of the plane y es.
     Exy[xs:xe, zs:ze] = np.power(np.power(Ex[xs:xe, ys:ye, int(Ny/2.)], 2.)\
@@ -247,9 +256,9 @@ for t in range(Nt): # count {0, Nt-1}
     
     Emax.append([max(Exy.max(), Eyz.max(), Exz.max())])
     Bmax.append([max(Bxy.max(), Byz.max(), Bxz.max())])
-
+    '''
     if flag_plt == False:
-        plt.figure(figsize =(12, 10))
+        plt.figure(figsize =(10, 8))
     
     plt.subplot(2,2,1)
     plt.pcolor(xv1, yv1, Bxy)
@@ -283,14 +292,11 @@ for t in range(Nt): # count {0, Nt-1}
         command = input("Press Enter, then start.")
         flag_start = True
         
-    plt.pause(0.001)
+    plt.pause(0.0000000001)
     plt.clf()
     flag_plt=True
-
+    '''
 print("DONE!")
-
-print("Min Energy", np.min(U))
-print("Max Energy", np.max(U))
 
 #
 # STEP 4: VISUALIZATION!
@@ -298,5 +304,6 @@ print("Max Energy", np.max(U))
 
 Energy(U)
 DivB(divB)
+Fieldmax(Emax, Bmax)
 
 plt.show()
