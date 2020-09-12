@@ -88,8 +88,8 @@ if animate:
 # STEP 1: SET the GRID!
 #
 
-Nt = 1000 # number of time steps
-Nx, Ny = 51, 51  # nodes
+Nt = 3000 # number of time steps
+Nx, Ny = 50, 50  # nodes
 sigma = 0.02
 xmin, xmax = 0, 1 # physic domain x
 ymin, ymax = 0, 1 # physic domain y
@@ -97,8 +97,8 @@ ymin, ymax = 0, 1 # physic domain y
 Lx, Ly = int(abs(xmax - xmin)), int(abs(ymax - ymin)) #logic domain lenght 
 dx = Lx/(Nx - 1) # faces are (nodes - 1)
 dy = Ly/(Ny - 1)
-dt = sigma*dx # CFL condition
-#dt = 0.00005 
+#dt = sigma*dx # CFL condition
+dt = 0.00005 
 
 print("LATTICE PARAMETERS!")
 print("Numbers of Iterations:", Nt)
