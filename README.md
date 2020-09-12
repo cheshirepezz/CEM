@@ -22,12 +22,11 @@
 
 ## Table of contents
 * [Maxwell Equations 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell1D)
+* [Particle Drift](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Drift)
+* [Landau Damping](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Landau_Damping)
 * [Transverse Electric mode 2D (Yee)](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
 * [Transverse Magnetic mode 2D (Yee)](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TMz)
 * [Maxwell Equations 3D (Yee)](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D)
-* [Particle Drift](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Drift)
-* [Landau Damping](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Landau_Damping)
-
 
 ## Technologies
 Project is created with:
