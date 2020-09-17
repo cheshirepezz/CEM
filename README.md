@@ -29,7 +29,10 @@
   * [Cylindrical](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Poisson2D/Cylindrical)
 * [Transverse Electric mode 2D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
 * [Transverse Magnetic mode 2D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TMz)
-* [Maxwell Equations 3D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D)
+* Maxwell Equations 3D
+  * [Free space](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/free)
+  * [Dielectric](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/dielectric)
+
 
 ## Technologies
 Project is created with:
