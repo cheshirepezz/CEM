@@ -23,12 +23,13 @@
 ## Table of contents
 * [Particle Drift](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Drift)
 * [Landau Damping](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Landau_Damping)
-* [Maxwell Equations 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell1D)
 * Poisson 2D
   * [Cartesian](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Poisson2D/Cartesian)
   * [Cylindrical](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Poisson2D/Cylindrical)
-* [Transverse Electric mode 2D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
-* [Transverse Magnetic mode 2D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TMz)
+* [Maxwell Equations 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell1D)
+* Maxwell Equations 2D
+  * [Transverse Electric mode 2D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
+  * [Transverse Magnetic mode 2D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TMz)
 * Maxwell Equations 3D
   * [Free space](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/free)
   * [Dielectric](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/dielectric)
