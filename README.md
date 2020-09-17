@@ -18,7 +18,7 @@
   
 </p>
 
-# Computational Plasma Physics (FDTD or Yee lattice)
+# Computational Plasma Physics on Yee lattice (FDTD method)
 
 ## Table of contents
 * [Particle Drift](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Drift)
