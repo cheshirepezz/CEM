@@ -44,7 +44,7 @@ Open a terminal and write the command below to clone in your PC Plasma-Recipes r
 
 ```
 git clone https://github.com/cheshirepezz/Plasma-Recipes.git
-cd 
+cd Plasma-Recipes
 ```
 Now choose ther topic you want to study (ex. TEz):
 
