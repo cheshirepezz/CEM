@@ -30,10 +30,10 @@
 * Maxwell Equations 2D
   * [Transverse Electric mode](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
   * [Transverse Magnetic mode](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TMz)
+  * [Transverse Electric mode in Curvilinear Geometry](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz-Curve)
 * Maxwell Equations 3D
   * [Free space](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/free)
   * [Dielectric medium](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/dielectric)
-
 
 ## Technologies
 Project is created with:
