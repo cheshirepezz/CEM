@@ -18,7 +18,7 @@
   
 </p>
 
-# Computational Plasma Physics on Yee lattice (FDTD method)
+# Computational ElectroMagnetism on Yee lattice (FDTD method)
 
 ## Table of contents
 * [Particle Drift 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Drift)
@@ -29,8 +29,6 @@
 * [Maxwell Equations 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell1D)
 * Maxwell Equations 2D
   * [Transverse Electric mode](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
-  * [Transverse Magnetic mode](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TMz)
-  * [Transverse Electric mode in Curvilinear Geometry](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz-Curve)
 * Maxwell Equations 3D
   * [Free space](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/free)
   * [Dielectric medium](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/dielectric)
@@ -41,10 +39,10 @@ Project is created with:
 	
 ## Installation
 
-The sources are located on github: https://github.com/cheshirepezz/Plasma-Recipes/
+The sources are located on github: https://github.com/cheshirepezz/CEM/
 
 To use this code:
-* Star the directory "Plasma-Recipes" 
+* Star the directory "CEM" 
 * Clone the github repo
 
 Open a terminal and write the command below to clone in your PC Plasma-Recipes repo:
