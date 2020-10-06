@@ -48,8 +48,8 @@ To use this code:
 Open a terminal and write the command below to clone in your PC Plasma-Recipes repo:
 
 ```
-git clone https://github.com/cheshirepezz/Plasma-Recipes.git
-cd Plasma-Recipes
+git clone https://github.com/cheshirepezz/CEM.git
+cd CEM
 ```
 Now choose ther topic you want to study (ex. TEz):
 
@@ -59,4 +59,4 @@ $ python TEz_cart.py
 ```
 ## License
 
-ComputeEM is made available under the [MIT License](https://github.com/cheshirepezz/Plasma-Recipes/blob/master/LICENSE).
+ComputeEM is made available under the [MIT License](https://github.com/cheshirepezz/CEM/blob/master/LICENSE).
