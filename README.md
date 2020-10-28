@@ -28,7 +28,8 @@
   * [Cylindrical](https://github.com/cheshirepezz/CEM/tree/master/Poisson2D/Cylindrical)
 * [Maxwell Equations 1D](https://github.com/cheshirepezz/CEM/tree/master/Maxwell1D)
 * Maxwell Equations 2D
-  * [Transverse Electric mode](https://github.com/cheshirepezz/CEM/tree/master/TEz)
+  * [Transverse Electric mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/TEz_cart.py)
+  * [TE mode \w functions](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
 * Maxwell Equations 3D
   * [Free space](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/free)
   * [Dielectric medium](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/dielectric)
