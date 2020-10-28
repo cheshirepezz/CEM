@@ -18,7 +18,7 @@
   
 </p>
 
-# Computational ElectroMagnetism on Yee lattice (FDTD method)
+# Computational ElectroMagnetism on Yee lattice
 
 ## Table of contents
 * [Particle Drift 1D](https://github.com/cheshirepezz/CEM/tree/master/Drift)
