@@ -2,18 +2,18 @@
 </p>
 
 <p align="center">
-    <img alt="Size" src="https://img.shields.io/github/repo-size/cheshirepezz/Plasma-Recipes">
+    <img alt="Size" src="https://img.shields.io/github/repo-size/cheshirepezz/CEM">
   </a>
-  <img alt="Forks" src="https://img.shields.io/github/forks/cheshirepezz/Plasma-Recipes">
+  <img alt="Forks" src="https://img.shields.io/github/forks/cheshirepezz/CEM">
   </a>
-  <img alt="Stars" src="https://img.shields.io/github/stars/cheshirepezz/Plasma-Recipes">
+  <img alt="Stars" src="https://img.shields.io/github/stars/cheshirepezz/CEM">
   </a>
-  <img alt="Languages" src="https://img.shields.io/github/languages/count/cheshirepezz/Plasma-Recipes">
+  <img alt="Languages" src="https://img.shields.io/github/languages/count/cheshirepezz/CEM">
   </a>
-  <a href="https://github.com/cheshirepezz/Plasma-Recipes/graphs/contributors">
-    <img alt="Contributors" src="https://img.shields.io/github/contributors/cheshirepezz/Plasma-Recipes">
+  <a href="https://github.com/cheshirepezz/CEM/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/cheshirepezz/CEM">
   </a>
-  <img alt="MIT Licence" src="https://img.shields.io/github/license/cheshirepezz/Plasma-Recipes">
+  <img alt="MIT Licence" src="https://img.shields.io/github/license/cheshirepezz/CEM">
   </a>
   
 </p>
@@ -21,17 +21,17 @@
 # Computational ElectroMagnetism on Yee lattice (FDTD method)
 
 ## Table of contents
-* [Particle Drift 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Drift)
-* [Landau Damping 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Landau_Damping)
+* [Particle Drift 1D](https://github.com/cheshirepezz/CEM/tree/master/Drift)
+* [Landau Damping 1D](https://github.com/cheshirepezz/CEM/tree/master/Landau_Damping)
 * Poisson 2D
-  * [Cartesian](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Poisson2D/Cartesian)
-  * [Cylindrical](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Poisson2D/Cylindrical)
-* [Maxwell Equations 1D](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell1D)
+  * [Cartesian](https://github.com/cheshirepezz/CEM/tree/master/Poisson2D/Cartesian)
+  * [Cylindrical](https://github.com/cheshirepezz/CEM/tree/master/Poisson2D/Cylindrical)
+* [Maxwell Equations 1D](https://github.com/cheshirepezz/CEM/tree/master/Maxwell1D)
 * Maxwell Equations 2D
-  * [Transverse Electric mode](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/TEz)
+  * [Transverse Electric mode](https://github.com/cheshirepezz/CEM/tree/master/TEz)
 * Maxwell Equations 3D
-  * [Free space](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/free)
-  * [Dielectric medium](https://github.com/cheshirepezz/Plasma-Recipes/tree/master/Maxwell3D/dielectric)
+  * [Free space](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/free)
+  * [Dielectric medium](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/dielectric)
 
 ## Technologies
 Project is created with:
@@ -43,7 +43,7 @@ The sources are located on github: https://github.com/cheshirepezz/CEM/
 
 To use this code:
 * Star the directory "CEM" 
-* Clone the github repo
+* Clone the github repocheshirepezz/CEM
 
 Open a terminal and write the command below to clone in your PC Plasma-Recipes repo:
 
