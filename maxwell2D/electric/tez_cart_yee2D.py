@@ -88,7 +88,7 @@ if animate:
 # STEP 1: SET the GRID!
 #
 
-Nt = 3000 # number of time steps
+Nt = 4000 # number of time steps
 Nx, Ny = 50, 50  # nodes
 sigma = 0.02
 xmin, xmax = 0, 1 # physic domain x
@@ -188,9 +188,10 @@ for t in range(Nt): # count {0, Nt-1}
     Bz[:, -1]  = Bz_b[:, 0] # top = bottom
 
     # Poynting theorem
-    U[t] =  0.5 * np.sum(np.power(Ex[xs:xe, ys:ye],2.)\
-                      + np.power(Ey[xs:xe, ys:ye],2.)\
-                      + Bz[xs:xe, ys:ye] * Bzold[xs:xe, ys:ye])
+    #U[t] =  0.5 * np.sum(np.power(Ex[xs:xe, ys:ye],2.)\
+    #                  + np.power(Ey[xs:xe, ys:ye],2.)\
+    #                  + Bz[xs:xe, ys:ye] * Bzold[xs:xe, ys:ye])
+    U[t] =  0.5 * np.sum(Bz[xs:xe, ys:ye] * Bzold[xs:xe, ys:ye])
     divE[t] = np.sum((1/dx) * (Ex[xs+1:xe+1, ys:ye] - Ex[xs:xe, ys:ye])\
                    + (1/dy) * (Ey[xs:xe, ys+1:ye+1] - Ey[xs:xe, ys:ye]))
 
