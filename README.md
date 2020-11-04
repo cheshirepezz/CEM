@@ -28,13 +28,13 @@
   * [Cylindrical](https://github.com/cheshirepezz/CEM/tree/master/Poisson2D/Cylindrical)
 * [Maxwell Equations 1D](https://github.com/cheshirepezz/CEM/tree/master/Maxwell1D)
 * Maxwell Equations 2D
-  * [Transverse Electric mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/TEz_cart.py)
+  * [Transverse Electric mode](https://github.com/cheshirepezz/CEM/tree/master/Maxwell2D/electric)
   * [TE_z mode \w functions](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
-  * [Transverse Magnetic mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
+  * [Transverse Magnetic mode](https://github.com/cheshirepezz/CEM/tree/master/Maxwell2D/magnetic)
 * Maxwell Equations 3D
-  * [Vacuum](https://github.com/cheshirepezz/CEM/blob/master/Maxwell3D/free/maxwell3D_cart.py)
-  * [Vacuum \w functions](https://github.com/cheshirepezz/CEM/tree/master/maxwell3D/%5Cwfunction)
-  * [Dielectric medium](https://github.com/cheshirepezz/CEM/tree/master/maxwell3D/dielectric)
+  * [Vacuum](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/vacuum)
+  * [Vacuum \w functions](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/%5Cwfunction)
+  * [Dielectric medium](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/dielectric)
   
 ## Technologies
 Project is created with:
@@ -54,12 +54,13 @@ Open a terminal and write the command below to clone in your PC Plasma-Recipes r
 git clone https://github.com/cheshirepezz/CEM.git
 cd CEM
 ```
-Now choose ther topic you want to study (ex. TEz):
+Now choose ther topic you want to study (ex. Maxwell 3D):
 
 ```
-$ cd TEz
-$ python TEz_cart.py
+$ cd Maxwell3D
+$ cd vacuum
+$ python maxwell_vacuum_yee3D.py
 ```
 ## License
 
-ComputeEM is made available under the [MIT License](https://github.com/cheshirepezz/CEM/blob/master/LICENSE).
+CEM is made available under the [MIT License](https://github.com/cheshirepezz/CEM/blob/master/LICENSE).
