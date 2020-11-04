@@ -29,8 +29,8 @@
 * [Maxwell Equations 1D](https://github.com/cheshirepezz/CEM/tree/master/Maxwell1D)
 * Maxwell Equations 2D
   * [Transverse Electric mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/TEz_cart.py)
-  * [Transverse Magnetic mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
   * [TE_z mode \w functions](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
+  * [Transverse Magnetic mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
 * Maxwell Equations 3D
   * [Vacuum](https://github.com/cheshirepezz/CEM/blob/master/Maxwell3D/free/maxwell3D_cart.py)
   * [Vacuum \w functions](https://github.com/cheshirepezz/CEM/tree/master/maxwell3D/%5Cwfunction)
