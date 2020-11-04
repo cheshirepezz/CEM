@@ -29,11 +29,12 @@
 * [Maxwell Equations 1D](https://github.com/cheshirepezz/CEM/tree/master/Maxwell1D)
 * Maxwell Equations 2D
   * [Transverse Electric mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/TEz_cart.py)
-  * [TE mode \w functions](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
+  * [Transverse Magnetic mode](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
+  * [TE_z mode \w functions](https://github.com/cheshirepezz/CEM/blob/master/TEz/yee3D.py)
 * Maxwell Equations 3D
-  * [Free space](https://github.com/cheshirepezz/CEM/blob/master/Maxwell3D/free/maxwell3D_cart.py)
-  * [Free space\w functions](https://github.com/cheshirepezz/CEM/blob/master/Maxwell3D/free/maxwell-yee3D.py)
-  * [Dielectric medium](https://github.com/cheshirepezz/CEM/tree/master/Maxwell3D/dielectric)
+  * [Vacuum](https://github.com/cheshirepezz/CEM/blob/master/Maxwell3D/free/maxwell3D_cart.py)
+  * [Vacuum \w functions](https://github.com/cheshirepezz/CEM/tree/master/maxwell3D/%5Cwfunction)
+  * [Dielectric medium](https://github.com/cheshirepezz/CEM/tree/master/maxwell3D/dielectric)
   
 ## Technologies
 Project is created with:
