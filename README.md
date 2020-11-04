@@ -54,12 +54,13 @@ Open a terminal and write the command below to clone in your PC Plasma-Recipes r
 git clone https://github.com/cheshirepezz/CEM.git
 cd CEM
 ```
-Now choose ther topic you want to study (ex. TEz):
+Now choose ther topic you want to study (ex. Maxwell 3D):
 
 ```
-$ cd TEz
-$ python TEz_cart.py
+$ cd Maxwell3D
+$ cd vacuum
+$ python maxwell_vacuum_yee3D.py
 ```
 ## License
 
-ComputeEM is made available under the [MIT License](https://github.com/cheshirepezz/CEM/blob/master/LICENSE).
+CEM is made available under the [MIT License](https://github.com/cheshirepezz/CEM/blob/master/LICENSE).
